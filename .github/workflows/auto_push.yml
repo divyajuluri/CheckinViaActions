@@ -26,9 +26,9 @@ jobs:
        
     - name: Get current dir
       id: folder
-      run:
-       temp = $(echo %cd%)
-       echo "::set-output name=folderPath::$temp" 
+      run: |
+       label = $(echo %cd%)
+       echo "::set-output name=folderPath::$label" 
        
     - name: print
       run: |
