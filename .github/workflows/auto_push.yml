@@ -19,9 +19,13 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Create folder and file
+      id: folder
       run: |
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
+       cd Test
+       set currentDir = %cd%
+       echo '::set-output name=folderPath::{currentDir}' 
     -
       name: Checkout repository
       uses: actions/checkout@v2
@@ -30,8 +34,9 @@ jobs:
     - 
       name: Pushes to another repository
       run: |
-          bash .github/workflows/scripts/entrypoint.sh
+          bash .github/workflows/scripts/entrypoint.sh "${{steps.folder.outputs.folderPath}}"
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+
 
     
