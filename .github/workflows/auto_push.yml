@@ -32,7 +32,7 @@ jobs:
       run: |
           echo "Hello"
           type .github/workflows/scripts/entrypoint.sh
-          .github/workflows/scripts/entrypoint.sh
+          bash .github/workflows/scripts/entrypoint.sh
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
 
