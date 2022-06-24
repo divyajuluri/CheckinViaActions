@@ -30,7 +30,7 @@ jobs:
     - 
       name: Pushes to another repository
       run: |
-          .github/workflows/scripts/entrypoint.sh
+          ".github/workflows/scripts/entrypoint.sh"
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
 
