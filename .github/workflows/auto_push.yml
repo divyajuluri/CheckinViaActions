@@ -23,5 +23,10 @@ jobs:
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
        
+    - name: Pushes to another repository
+      run: |
+          .github/workflows/scripts/entrypoint.sh
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
 
     
