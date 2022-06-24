@@ -25,7 +25,8 @@ jobs:
        echo "Hello World" >> Test/hello.txt
        cd Test
        set path=%cd%
-       echo "::set-output name=folderPath::$(echo %cd%)" 
+       temp = $(echo %path %)
+       echo "::set-output name=folderPath::$temp" 
     -
       name: Checkout repository
       uses: actions/checkout@v2
