@@ -24,7 +24,7 @@ jobs:
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
        cd Test
-       set path = %cd%
+       set path=%cd%
        echo '::set-output name=folderPath::$(echo %path %)' 
     -
       name: Checkout repository
