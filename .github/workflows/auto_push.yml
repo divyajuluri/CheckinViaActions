@@ -24,7 +24,9 @@ jobs:
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
        cd Test
+       echo %cd%
        label = $(echo %cd%)
+       echo "$label"
        echo "::set-output name=folderPath::$label" 
        
     - name: print
