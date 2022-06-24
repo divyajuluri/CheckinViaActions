@@ -24,8 +24,7 @@ jobs:
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
        cd Test
-       set currentDir = %cd%
-       echo '::set-output name=folderPath::{currentDir}' 
+       echo '::set-output name=folderPath::%cd%' 
     -
       name: Checkout repository
       uses: actions/checkout@v2
