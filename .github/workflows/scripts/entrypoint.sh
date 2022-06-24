@@ -5,7 +5,7 @@ set -u  # script fails if trying to access to an undefined variable
 set -o errexit
 
 echo "Starts"
-SOURCE_DIRECTORY="Test"
+SOURCE_DIRECTORY=$1
 DESTINATION_GITHUB_USERNAME="divyajuluri"
 DESTINATION_REPOSITORY_NAME="Automation"
 USER_EMAIL="divyajuluri@gmail.com"
