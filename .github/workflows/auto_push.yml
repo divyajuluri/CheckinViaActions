@@ -26,5 +26,5 @@ jobs:
        cd Test
        echo "$GITHUB_WORKSPACE"
        set path=%cd%
-       echo %path %
+       echo %path%
 
