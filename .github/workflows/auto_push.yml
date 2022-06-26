@@ -23,8 +23,14 @@ jobs:
       run: |
        mkdir "Test"
        echo "Hello World" >> Test/hello.txt
-       cd Test
-       echo "$GITHUB_WORKSPACE"
-       set path=%cd%
-       echo %path%
+    
+    - name: Upload file
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: Test
+      
+    - uses: actions/download-artifact@v2
+      with:
+         name: my-artifact
 
