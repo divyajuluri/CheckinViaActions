@@ -48,6 +48,7 @@ jobs:
       with:
        repository: divyajuluri/Automation
        fetch-depth: 0
+       token: ${{secrets.API_TOKEN_GITHUB}}
     - 
      name: Download specs files
      id: download
@@ -60,9 +61,6 @@ jobs:
       run: | 
        git add -A
        git status
-       git config user.name github-actions
-       git config user.email github-actions@github.com
        git commit -m "update"
-       git push 
-       
+       git push origin main
 
