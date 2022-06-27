@@ -64,10 +64,10 @@ jobs:
      uses: actions/download-artifact@v3
      with:
        name: ${{needs.create_files.outputs.specs_artifactory}} 
+       path: target
       
     -
       run: | 
-       cp ${{format('{0}/hello.txt', steps.download.outputs.download-path)}} target
        git add -A
        git status
        
