@@ -61,10 +61,10 @@ jobs:
     - 
      name: Download specs files
      id: download
-     uses: actions/download-artifact@v2
+     uses: actions/download-artifact@v3
      with:
        name: ${{needs.create_files.outputs.specs_artifactory}} 
-       
+      
     -
       run: | 
        cp ${{format('{0}/hello.txt', steps.download.outputs.download-path)}} target
