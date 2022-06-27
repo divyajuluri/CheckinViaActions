@@ -39,10 +39,10 @@ jobs:
        cmd %cd%
       
     -   name: Upload spec files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{github.ref_name}}
-          path: ${{github.ref_name}}
+          name: notes_specs
+          path: ${{format('{0}/hello.txt, github.ref_name)}}
           
      
       
@@ -63,7 +63,7 @@ jobs:
      id: download
      uses: actions/download-artifact@v3
      with:
-       name: ${{needs.create_files.outputs.specs_artifactory}} 
+       name: notes_specs
        path: target
       
     -
