@@ -67,10 +67,8 @@ jobs:
        
     -
       run: | 
-       mkdir specs
-       cp ${{steps.download.outputs.download-path}} specs
-       ls
-       cd specs
-       ls
+       cp ${{format('{0}/hello.txt', steps.download.outputs.download-path}} target
+       git add -A
+       git status
        
 
