@@ -60,6 +60,8 @@ jobs:
       run: | 
        git add -A
        git status
+       git config user.name github-actions
+       git config user.email github-actions@github.com
        git commit -m "update"
        git push origin/main
        
