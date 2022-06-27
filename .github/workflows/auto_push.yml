@@ -45,7 +45,7 @@ jobs:
     - name: checkout destination repo
       uses: actions/checkout@v3
       with:
-       repository: Automation
+       repository: divyajuluri/Automation
        fetch-depth: 0
        
     - run: |
