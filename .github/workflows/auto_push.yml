@@ -48,6 +48,7 @@ jobs:
       with:
        repository: divyajuluri/Automation
        fetch-depth: 0
+       token: ${{secrets.API_TOKEN_GITHUB}}
     - 
      name: Download specs files
      id: download
