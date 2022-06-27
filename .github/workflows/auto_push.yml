@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: notes_specs
-          path: ${{format('{0}/hello.txt, github.ref_name)}}
+          path: ${{format('{0}/hello.txt', github.ref_name)}}
           
      
       
