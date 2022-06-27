@@ -14,23 +14,39 @@ jobs:
   # This workflow contains a single job called "greet"
   push_to_other_repo:
     runs-on: windows-latest
+    outputs:
+      specs_artifactory: ${{ steps.spec_dir.outputs.name }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
     - name: Create folder and file
-      id: folder
+      id: spec_dir
       run: |
-       mkdir "Test"
-       echo "Hello World" >> Test/hello.txt
-    
-    - name: Upload file
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: Test
+       mkdir ${{github.ref_name }}
+       echo "Hello World" >> ${{github.ref_name }}/hello.txt
+       echo "::set-output name=name::${{github.ref_name }}"
       
-    - uses: actions/download-artifact@v2
-      with:
-         name: my-artifact
+    - 
+        name: Upload spec files
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{github.ref_name}}
+          path: ${{github.ref_name}}
+      
+  job2:
+    runs-on: ubuntu-latest
+    needs: push_to_other_repo
+    steps:
+    - 
+     name: Download specs files
+     uses: actions/download-artifact@v2
+     with:
+       name: ${{needs.push_to_other_repo.outputs.specs_artifactory}} 
+         
+      
+    - 
+     name: test   
+     run: echo ${{needs.push_to_other_repo.outputs.specs_artifactory}} 
+      
 
