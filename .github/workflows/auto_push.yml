@@ -42,27 +42,26 @@ jobs:
           name: ${{github.ref_name}}
           path: ${{github.ref_name}}
           
-    - name: checkout destination repo
-      uses: actions/checkout@v3
-      with:
-       repository: divyajuluri/Automation
-       fetch-depth: 0
-       
-    - run: |
-       cmd %cd%
-      
+     
       
   push_to_other_repo:
     runs-on: ubuntu-latest
     needs: create_files
     steps:
+    
+    - name: checkout destination repo
+      uses: actions/checkout@v3
+      with:
+       repository: divyajuluri/Automation
+       fetch-depth: 0
     - 
      name: Download specs files
      uses: actions/download-artifact@v2
      with:
        name: ${{needs.create_files.outputs.specs_artifactory}} 
-    - 
-     name: test   
-     run: echo ${{needs.push_to_other_repo.outputs.specs_artifactory}} 
-      
+       
+    -
+      run: | 
+       git status
+       
 
