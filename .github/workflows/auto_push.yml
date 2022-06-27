@@ -14,17 +14,12 @@ jobs:
   # This workflow contains a single job called "greet"
   create_files:
     runs-on: windows-latest
-    outputs:
-      specs_artifactory: ${{ steps.spec_dir.outputs.name }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
     - name: checkout current repo
       uses: actions/checkout@v3
-      
-    - run: |
-       cmd %cd%
       
     - name: Create folder and file
       id: spec_dir
@@ -33,11 +28,7 @@ jobs:
        mkdir ${{github.ref_name }}
        echo "Hello World" >> ${{github.ref_name }}/hello.txt
        echo "Hello World" >> ${{github.ref_name }}/hello2.txt
-       echo "::set-output name=name::${{github.ref_name }}"
        
-    - run: |
-       cmd %cd%
-      
     -   name: Upload spec files
         uses: actions/upload-artifact@v3
         with:
@@ -49,8 +40,7 @@ jobs:
   push_to_other_repo:
     runs-on: windows-latest
     needs: create_files
-    outputs: 
-     source: steps.download.outputs.download-path
+
     steps:
     
     - name: checkout destination repo
