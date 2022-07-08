@@ -13,7 +13,7 @@ on:
 jobs:
   # This workflow contains a single job called "greet"
   create_files:
-    runs-on: windows-latest
+    runs-on: linux-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,7 +38,7 @@ jobs:
      
       
   push_to_other_repo:
-    runs-on: windows-latest
+    runs-on: linux-latest
     needs: create_files
 
     steps:
