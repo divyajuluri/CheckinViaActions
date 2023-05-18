@@ -14,6 +14,8 @@ jobs:
   # This workflow contains a single job called "greet"
   create_files:
     runs-on: linux-latest
+    env: 
+      release_version: ${{ github.ref_name }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,6 +30,7 @@ jobs:
        mkdir ${{github.ref_name }}
        echo "Hello World" >> ${{github.ref_name }}/hello.txt
        echo "Hello World" >> ${{github.ref_name }}/hello2.txt
+       echo  ${{ format('{0}', env.release_version) }}
        
     -   name: Upload spec files
         uses: actions/upload-artifact@v3
