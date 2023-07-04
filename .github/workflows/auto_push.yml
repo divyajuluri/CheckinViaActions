@@ -31,6 +31,8 @@ jobs:
        echo "Hello World" >> ${{github.ref_name }}/hello.txt
        echo "Hello World" >> ${{github.ref_name }}/hello2.txt
        echo  ${{ format('{0}', env.release_version) }}
+       echo "CONFIG_OUTPUT_FILE=specs/irn_configuration_api_${{github.ref_name}}.json" >> $GITHUB_ENV
+       echo ${env.CONFIG_OUTPUT_FILE}
        
     -   name: Upload spec files
         uses: actions/upload-artifact@v3
